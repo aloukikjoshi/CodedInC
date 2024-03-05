@@ -142,17 +142,56 @@ void displayList(struct Node* head) {
 
 int main() {
     struct Node* head = NULL;
-
-    insertAtBeginning(&head, 3);
-    insertAtBeginning(&head, 2);
-    insertAtEnd(&head, 4);
-    insertAtPosition(&head, 5, 2);
-    displayList(head);
-
-    deleteFromBeginning(&head);
-    deleteFromEnd(&head);
-    deleteFromPosition(&head, 2);
-    displayList(head);
-
+    int choice, data, position;
+    do {
+        printf("\n1. Insert at Beginning\n");
+        printf("2. Insert at End\n");
+        printf("3. Insert at Position\n");
+        printf("4. Delete from Beginning\n");
+        printf("5. Delete from End\n");
+        printf("6. Delete from Position\n");
+        printf("7. Display List\n");
+        printf("8. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                printf("Enter data to insert at the beginning: ");
+                scanf("%d", &data);
+                insertAtBeginning(&head, data);
+                break;
+            case 2:
+                printf("Enter data to insert at the end: ");
+                scanf("%d", &data);
+                insertAtEnd(&head, data);
+                break;
+            case 3:
+                printf("Enter data to insert: ");
+                scanf("%d", &data);
+                printf("Enter position: ");
+                scanf("%d", &position);
+                insertAtPosition(&head, data, position);
+                break;
+            case 4:
+                deleteFromBeginning(&head);
+                break;
+            case 5:
+                deleteFromEnd(&head);
+                break;
+            case 6:
+                printf("Enter position to delete: ");
+                scanf("%d", &position);
+                deleteFromPosition(&head, position);
+                break;
+            case 7:
+                displayList(head);
+                break;
+            case 8:
+                printf("Exiting program. Goodbye!\n");
+                break;
+            default:
+                printf("Invalid choice. Please enter a valid option.\n");
+        }
+    } while (choice != 8);
     return 0;
 }
