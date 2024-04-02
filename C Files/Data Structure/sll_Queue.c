@@ -82,17 +82,34 @@ int main() {
     struct Queue queue;
     initializeQueue(&queue);
 
-    enqueue(&queue, 3);
-    enqueue(&queue, 2);
-    enqueue(&queue, 4);
-    displayQueue(&queue);
+    int choice, element;
+    while (1) {
+        printf("\n1. Enqueue\n2. Dequeue\n3. Front\n4. Display\n5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    int dequeuedElement = dequeue(&queue);
-    printf("Dequeued element: %d\n", dequeuedElement);
-    displayQueue(&queue);
-
-    int frontElement = front(&queue);
-    printf("Front element: %d\n", frontElement);
+        switch (choice) {
+            case 1:
+                printf("Enter the element to enqueue: ");
+                scanf("%d", &element);
+                enqueue(&queue, element);
+                break;
+            case 2:
+                dequeue(&queue);
+                break;
+            case 3:
+                printf("Front element: %d\n", front(&queue));
+                break;
+            case 4:
+                displayQueue(&queue);
+                break;
+            case 5:
+                printf("Exiting...\n");
+                exit(0);
+            default:
+                printf("Invalid choice! Please enter a valid option.\n");
+        }
+    }
 
     return 0;
 }
